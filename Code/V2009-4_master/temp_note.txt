@@ -1,0 +1,6 @@
+Here is the current code. Note that it is just V2008 renamed to V2009_slave at present. Also note that very minor changes have been made to the text you returned, which is stored as V2009_slave_goals.txt (thanks, it was very helpful). Based on all of this information, can you generate code that performs the functions discussed the previously discussed Serial monitoring/paragraph_message - injection difference?
+
+Please take the precautions necessary to keep whichever serial(s) are currently functioning ... functioning. For now, I want to add a function that puts the device in module-listening mode. This will mean a modification to the SplitFlapMotor.cpp file, so that we can have a *** function to make serialRead be accepting from the module to the left instead of the Arduino IDE. This needs to be off by default, and reset to off when the reset button is pushed. This way I can set the function on 2/3 modules in my test grid and keep the first module as a ~sudo master, but only different in that I can still write to him from the Arduino IDE.
+
+
+Pardon me, I've had that drafted for a bit and didn't edit it. Before you generate anything, is this logically sound?

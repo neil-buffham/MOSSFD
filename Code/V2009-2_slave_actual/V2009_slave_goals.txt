@@ -1,0 +1,131 @@
+V2009 Slave Firmware – Paragraph Message Logic (Rev. 1)
+
+Goal
+-----
+
+Create a "send-only" network with only two code types:
+
+- Master unit
+  - Parses input from the serial monitor
+  - Sends a full paragraph-style message over serial (TX)
+
+- Slave units
+  - Know only their own ID
+  - Do not know their position or other IDs
+  - Pass messages downstream
+  - Parse only their own message chunk or a broadcast chunk (FFFF)
+  - Store and process the entire message
+
+Even the master stores and processes the same message format. This avoids complex logic branching and timing issues.
+
+
+Message Structure
+------------------
+
+Delimiters:
+
+[]  - Full message bounds
+{}  - Master ID
+|   - Separates module-specific chunks
+:   - Separates fields within each chunk
+
+Chunk Format:
+
+SlaveID:Command_or_Character:Status
+
+Status Codes:
+
+0 = Go now
+1 = No command yet (not received yet)
+7 = Parse error (chunk not found or unreadable)
+8 = Execution error
+9 = Complete (executed successfully)
+
+
+Module Responsibilities
+------------------------
+
+Each slave module handles:
+
+- Serial receive (left/RX)
+- Serial forward (right/TX)
+- Internal ID (already implemented)
+- Paragraph message reception and storage
+- Command and status tracking
+- State flags for:
+    paragraph_message_received
+    paragraph_message_sent
+    paragraph_message_processed
+
+Key variables:
+
+- String paragraph_message
+- String current_command
+- int current_command_status
+- Boolean flags as above
+- bool ready_for_paragraph_message
+
+
+Example Messages
+-----------------
+
+Display message “ABC”:
+[{14146C1C4278}|14146C1C4278:A:0|0445470B65F4:B:0|848A6C1C4278:C:0]
+
+Send reset to all modules:
+[{14146C1C4278}|FFFF:***Reset:0]
+
+
+Logical Flow (per Slave Module)
+-------------------------------
+
+ready_for_paragraph_message = false
+// Standard startup, zeroing, etc.
+current_command = NULL or safe default
+current_command_status = 1
+ready_for_paragraph_message = true
+paragraph_message = NULL
+paragraph_message_received = false
+paragraph_message_sent = false
+paragraph_message_processed = false
+
+Once RX receives a full message ending in ]:
+
+paragraph_message_received = true
+ready_for_paragraph_message = false
+paragraph_message = "[{...}]" //fill actual value
+
+Immediately forward the same message out over TX:
+
+send via Serial.print() to right module
+paragraph_message_sent = true
+
+Then, when ready to parse:
+
+if (paragraph_message != NULL &&
+    paragraph_message_sent == true &&
+    paragraph_message_processed == false)
+{
+    // Step 1: Confirm message begins with '['
+    // Step 2: Scan for chunk containing "FFFF"
+    //         If found, execute its command and skip personal ID check
+    // Step 3: If FFFF not found, search for this module’s ID
+    //         If found:
+    //           - current_command = content between first and second ':'
+    //           - current_command_status = content after second ':' until next '|' or ']'
+    //         If not found:
+    //           - current_command = safe default null value
+    //           - current_command_status = 7 (parse error)
+
+    paragraph_message_processed = true
+}
+
+
+Notes and Future Considerations
+-------------------------------
+
+- Delimiters []{}|: are reserved and cannot safely appear in character data yet. If they do, the parsing will fail. Escaping will be addressed later.
+- “Hold” and “Go” status codes are not implemented yet but may be added.
+- It may be useful in the future to isolate parsing logic into a dedicated function like:
+    bool processParagraphMessage(String message);
+- Optionally, consider validating the message format before storing it (i.e., it must start with [ and end with ]).

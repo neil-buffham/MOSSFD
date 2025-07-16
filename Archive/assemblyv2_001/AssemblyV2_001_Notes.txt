@@ -1,0 +1,8 @@
+This was created in Sketchup, and is one of the earliest renditions of the project. It worked okay, but was pretty rudimentary. I didn't have a multicolor 3d printer and didn't want to make 3mfs. (I still don't want to, but what else is new). So I just printed off sheets of paper and glued them on. Time consuming, and questionably permanent.
+
+
+Sketchup (make 2017) has to have a handful of extensions to make 3d printing models "well", and I won't pretend it's a great solution, but monthly subscriptions for things that don't require continuous upkeep (for example a mail/SMTP server, or other legitimate hosting service) are pretty not cool. Also, a lot of CAD "licenses" have weird stipulations like you don't actually own the design, or you can only make x amount of money off of something drawn in said program. 
+So, no real circles, but you own your not-real circles.
+
+
+I switched to using onshape, despite having just recently re-learned Fusion360. Eventually I hope to have parallel files in several types, based off of "Master" dimension/cad/blueprint files, but time will tell. I figured the onshape trade-off of no privacy for your files, but no financial cap (Which I probably misunderstood, but such is non-lawyer life) might be more friendly for file sharing / "Ownership".

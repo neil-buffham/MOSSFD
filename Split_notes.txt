@@ -1,0 +1,312 @@
+Next firmware goals:
+- Move back to a single-logical parsing situation by having a variable ActiveListenSerial, this way hopefully
+   we can define multiple serial connections, but do our parsing based on what serial is listened to at present.
+- With that, possibly combine back into one firmware instead of a forked Master/Slave pair
+- Potentially provision for a button or switch or jumper to change between LEFTMODE and MASTERMODE
+- Clean up the info and Zoffset data/debug information
+- Add a motor power off timeout function
+- Add a permanent variable that serves like an odometer, just because it would be interesting and we are already tracking rotations.
+- Update available commands:
+
+---
+Available Commands:
+***INFO       - Print current information                    //update
+***ZERO       - Re-index using magnet			     //Possibly add slow zero
+***<number>   - Move to flap index by number                 //Verify working after combined logic
+***POS        - Print current step and degree position       //Possibly integrate to info / delete
+***LIST       - Print character index list                   //.
+***RESET      - Restart the ESP32                            //.
+***REV        - Measure steps in one revolution              //Probably delete
+***COUNT      - Show magnet pass count                       //Integrate/delete
+***MOVE <N>   - Move forward by N steps                      //Delete
+***ZOFFSET    - Set magnet-to-flap offset in degrees         //Cleanup + clean debug
+***OFFSET     - Set global step offset                       //Cleanup + clean debug
+***RESETCONFIG - Reset stored config to default values       //.
+***HELP       - Show this help message                       //Update to match
+***LEFTMODE   - Enable left-module input mode                //Update to match new logic
+****[message] - Inject paragraph_message (for dev testing)   //Note: only available in MasterMode
+
+Type any single character to move to that flap.              //Eh, probably fine
+
+---
+
+Current array:
+14146C1C4278
+E0F76B1C4278
+0445470B65F4
+F893963B015C
+2C1A6D1C4278
+9CDC550B65F4
+5CB469BF1388
+1CF861BF1388
+848A6C1C4278
+
+D4836C1C4278 //known issues
+
+****[{14146C1C4278}|14146C1C4278:0:0|E0F76B1C4278:1:0|0445470B65F4:2:0|F893963B015C:3:0|2C1A6D1C4278:4:0|9CDC550B65F4:5:0|5CB469BF1388:6:0|1CF861BF1388:7:0|848A6C1C4278:8:0]
+
+****[{14146C1C4278}|D4836C1C4278:***reset:0]
+
+
+---
+Current Firmwares: V2009-2_Master, V2009-3_Slave
+Working:
+- Space character
+- FFFF Character Commands
+ 	****[{FFFF}|FFFF:~:0]
+- FFFF Zero Commands
+ 	****[{FFFF}|FFFF:***ZERO:0]
+- FFFF Reset Commands
+ 	****[{FFFF}|FFFF:***RESET:0]
+
+
+
+NOT WORKING:
+- the characters - on only the master firmware. Slave works fine.
+ 	Scratch that. It was finnicky but went eventually.
+ 	- / ,
+
+- Master module individual commands finnicky
+ 	- Help works
+ 	- Reset and Zero do not
+ 	- Seems like the rest of the commands don't work (They are split into a separate portion in code)
+
+
+***Zoffset0 - Displayed "," when commanded character "%"
+***Zoffset72 - Displayed "@" when commanded character "%"
+***Zoffset144 - Displayed '"' when commanded character "%"
+***Zoffset216 - Displayed '!' when commanded character "%"
+***Zoffset4032 - Displayed '/' when commanded character "%"
+***Zoffset353 - Displayed '&' when commanded character "%"
+
+
+***Zoffset90 - Displayed '@' when commanded character "%"
+
+
+/*
+  Zero Offset Reference Table (evenly spaced around 91.00°)
+
+  Use with ***ZOFFSET<degrees> command
+  Each row represents a full-degree step
+  One flap ≈ 6.32°
+
+// Steps   Degrees     Flap Offset (approx)
+// ------  --------     ---------------------
+//   927     81.47°         -1.50 flaps
+//   939     82.50°         -1.35 flaps
+//   951     83.53°         -1.20 flaps
+//   963     84.56°         -1.04 flaps
+//   975     85.59°         -0.90 flaps
+//   987     86.62°         -0.75 flaps
+//   999     87.66°         -0.60 flaps
+//  1011     88.69°         -0.45 flaps
+//  1023     89.72°         -0.30 flaps - two modules are currently set to this
+//  1035     90.75°         baseline (ideal)
+//  1047     91.78°         +0.15 flaps
+//  1059     92.81°         +0.30 flaps
+//  1071     93.84°         +0.45 flaps
+//  1083     94.88°         +0.60 flaps
+//  1095     95.91°         +0.75 flaps
+//  1107     96.94°         +0.90 flaps
+//  1119     97.97°         +1.04 flaps
+//  1131     99.00°         +1.20 flaps
+//  1143    100.03°         +1.35 flaps
+//  1155    101.06°         +1.50 flaps
+
+*/
+
+---
+
+2 - Motor_offset
+3 - Bottom
+3 - Drum_57
+3 - Drum_57_lid
+4 - Right_Wall
+7 - Left_wall
+7 - Lid_(wide)
+8 - Motor_Bracket
+2 - PCB_tray
+2-5 - Flaps (Special Characters)
+
+
+Microcontroller:
+ESP32-WROOM-32D
+
+28BYJ-48 5V DC Stepper Motor with
+ULN2003AN BWQ 2436C motor driver chip in a breakout board
+
+
+A3144 hall effect sensor (3 pin) - note that the side with the writing is the front face, and needs to interact with a magnet's South pole.
+  Pin 1 (left)   -   VCC (typically 5V)
+  Pin 2 (middle) -   GND
+  Pin 3 (right)  -   OUT (signal to ESP32, use 10kohm pullup resistor wired to 3.3v)
+    one wire straight from the pin to the esp32
+    one wire from the esp32 through the 10kohm resistor to the 3.3v pin.
+
+Connectors for module to module communication:
+  1 - VCC (Shared 5v Power)
+  2 - GND (Shared ground)
+  3 - RX (incoming data)
+  4 - TX (outgoing data)
+  5 - Presence/detect (sense neighboring modules/ESP's) //likely not used in current-version code
+
+
+Buttons:  //these are not populated in current version hardware.
+  BTN1 - GPIO36 (VP) - Use internal Pullup resistor and wire opposite to GND
+  BTN2 - GPIO39 (VN) - Use internal Pullup resistor and wire opposite to GND
+
+Wiring notes:
+5V and GND bus bars:
+10 screw bus bar for Ground
+  4 for the top/bottom/side/side communication
+  2 for the buttons
+  1 for the type c 5VIN ground connector
+  1 for the ESP32 ground connector
+  1 for the Hall Effect Sensor
+  1 for the Motor Driver
+
+8 screw bus bar for 5V
+  4 for the top/bottom/side/side communication
+  1 for the type c 5VIN connector
+  1 for the ESP32 VIN
+  1 for the Hall Effect Sensor
+  1 for the Motor Driver
+
+
+---
+Goal for now: Get a "Send-only" network together where there are only two code types: The Master unit, and Slave units.
+The master parses a "serial monitor" input from the Arduino IDE, and spits out a paragraph style text over a module-to-module
+serial connection (RX and TX). Each slave unit knows its own identifier, but nothing else in relation to the display. They
+don't "dabble" in anything besides searching the serial-received message for the chunk that contains their identifier, forwarding
+the serial message on to the right, and following the command that they received. The only other thing that each module needs to
+"be aware" of is FFFF. They should be set up to look for FFFF in the paragraph message that is sent in the same way they look for
+their own ID, and follow commands stated to FFFF. There might need to be own ID vs FFFF logic later, but not yet.
+
+While perhaps not the most logical, for now I want each module, including the master, to both store and process the paragraph
+message. This will hopefully avoid too many branches of active code that need to function together (ex. master code execution vs.
+slave code execution + timing + "finished" handling, etc.
+
+
+I think a logical way to do this will be to have Some pre-determined dividers:
+[] //means the beginning/end of the message that is sent from the master
+{} //encompass the master ID
+| //divide the message from the master into chunks that are applicable to each unit
+: divide the portion of the message that is applicable to each unit into sections
+
+
+The sections:
+[{MasterID}|SlaveID:Character or code:Status|SlaveID:Character or code:Status
+
+Third value: status
+0 = no modifier //go to character or perform code immediately. Eventually blank might call this function as well.
+1 = no command detected yet
+7 = parse_error //could not parse a useable command out of the paragraph_message
+8 = execution_error //the command was not completed
+9 = complete //the last command was completed correctly - used for internal recording, not communication yet.
+
+/*
+//- Soon we may try to implement "hold"/wait functionality, but not yet.
+ = Hold //Store value but don't go yet
+ =  Go //Go to stored value, or "" if no value present //There should always be a value present
+*/
+
+
+/*
+//- The following are in ideation only and should be nearly entirely ignored. Do not cater to them.
+ = Finished //From the master module's perspective, this is not a "TX" value, this would be recieved.
+ = Received //Character received
+*/
+
+
+Example setup:
+Master: 14146C1C4278
+Slave1: 0445470B65F4
+Slave2: 848A6C1C4278
+
+Example outputs:
+ABC
+No delays or holds, just go now:
+[{14146C1C4278}|14146C1C4278:A:0|0445470B65F4:B:0|848A6C1C4278:C:0]
+
+
+DOG
+No delays or holds, just go now:
+[{14146C1C4278}|14146C1C4278:A:0|0445470B65F4:B:0|848A6C1C4278:C:0]
+
+Reset all modules now:
+[{14146C1C4278}|FFFF:***Reset:0]
+
+Zero all modules now:
+****[{FFFF}|FFFF:***ZERO:0]
+
+---
+
+With this in mind, I think that each module will need local processing for the following:
+- Serial receive(Left)
+- Serial write(Right)
+
+- A variable for it's own ID (already implemented)
+- A "Status" variable that notes if the module is ready to receive the p. message
+- long text variable to store the paragraph
+
+current_command - A variable to store the command or character decided by the paragraph message
+current_command_status - A variable to store the status declared by the paragraph message
+
+- Several Boolean variables:
+  - One to record that a new paragraph message has been received
+  - Another to record that the current paragraph message has been forwarded to the right TX
+  - Another to mark if the current message has been processed
+//This should conclude what is needed to interact with the paragraph message.
+//note that there likely are some ?empirical? errors with this logic's ability to display
+//characters such as " : | { } [ ]  .I recognize this, but if we can get anything working
+//then we will try to fix that later. We will not be modifying the flap_index.h file to
+//accommodate this code structure at all, and just hoping for the best until it breaks.
+
+Example slave logical flow:
+ready_for_paragraph_message = FALSE
+//insert standard startup procedure here
+current_command - Either NULL or whatever is safe/easy to do as an alternative
+current_command_status -
+ready_for_paragraph_message = TRUE
+//print "Ready to receive paragraph message.
+paragraph_message = NULL
+paragraph_message_received = FALSE
+paragraph_message_sent = FALSE
+paragraph_message_processed = FALSE
+
+Left RX receives the following:
+[{14146C1C4278}|14146C1C4278:A:0|0445470B65F4:B:0|848A6C1C4278:C:0]
+//The logical flow of paragraph receiving/processing has not been covered yet, but know
+//that the module sees the character ] and recognizes the message is complete.
+paragraph_message_received = TRUE
+ready_for_paragraph_message = FALSE
+paragraph_message = "[{14146C1C4278}|14146C1C4278:A:0|0445470B65F4:B:0|848A6C1C4278:C:0]"
+
+Right TX sends the following:
+[{14146C1C4278}|14146C1C4278:A:0|0445470B65F4:B:0|848A6C1C4278:C:0]
+paragraph_message_sent = TRUE
+
+
+if paragraph_message == not NULL:
+  if paragraph_message_sent == TRUE:
+    if paragraph_message_processed = FALSE:
+/*
+Look for the following:
+[ - denotes a paragraph_message that is useable
+then run one scan through, looking for "FFFF"
+If the character ] is found and no FFFF is found, there isn't an FFFF command
+If it is found, then DO NOT run the second processing of the paragraph_message.
+if it isn't found, we need to search the paragraph_message again to find this unit's character ID.
+IF you find this unit's character ID, do the following (relative to the just-detected character ID):
+Immediately following the character ID there should be a ":" character.
+Detect the section of text between this instance of ":" and the next instance of the character ":"
+Record this value as the "current_command".
+The current_command was defined by a closing ":" character. Store any characters
+that follow this as the current_command_status, until you reach either ":" or "|".
+
+Once these values have been populated, stop processing the paragraph_message. There
+is no need to look through the rest of it.
+
+if the character "]" is detected and this module's ID has not been detected:
+current_command = whatever a safe null value is
+current_command_status = 7 // parse_error

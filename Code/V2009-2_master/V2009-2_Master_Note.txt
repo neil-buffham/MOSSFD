@@ -1,0 +1,3 @@
+There are a handful of issues with this "firmware", the two biggest ones being:
+- You have to send the initial message several times before it will take. Once you've been sending messages (over Arduino IDE serial) for a bit it calms down. It is probably due to how the Serial input is read/parsed (rather than the message itself being parsed once it is received).
+- Many of the commands are not available for use over Arduino IDE Serial Monitor Input. They may or may not work if you send the command to the master module through a "Paragraph_Message". No promises.

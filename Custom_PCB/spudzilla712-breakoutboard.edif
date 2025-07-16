@@ -1,0 +1,627 @@
+(edif Breakout_Board
+    (edifVersion 2 0 0)
+    (edifLevel 0)
+    (keywordMap (keywordLevel 0))
+    (status
+        (written
+            (timestamp 2025 07 16 03 02 40.982)
+            (program "Flux" (version "1.0"))
+            (author "Flux")
+        )
+    )
+    (library FluxLibrary
+        (edifLevel 0)
+        (technology (numberDefinition))
+        (cell "XT30UPB-F30.G.Y"
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port "+" (direction inout))
+                (port "-" (direction inout))
+                )
+            )
+        )
+        (cell "Z-ICS0S16P-NG00"
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port 6 (direction inout))
+                (port 2 (direction inout))
+                (port 13 (direction inout))
+                (port 7 (direction inout))
+                (port 12 (direction inout))
+                (port 4 (direction inout))
+                (port 16 (direction inout))
+                (port 10 (direction inout))
+                (port 9 (direction inout))
+                (port 1 (direction inout))
+                (port 14 (direction inout))
+                (port 11 (direction inout))
+                (port 3 (direction inout))
+                (port 5 (direction inout))
+                (port 15 (direction inout))
+                (port 8 (direction inout))
+                )
+            )
+        )
+        (cell "PZ254-1-19-Z-8.5"
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port 4 (direction inout))
+                (port 12 (direction inout))
+                (port 16 (direction inout))
+                (port 5 (direction inout))
+                (port 1 (direction inout))
+                (port 2 (direction inout))
+                (port 19 (direction inout))
+                (port 17 (direction inout))
+                (port 9 (direction inout))
+                (port 3 (direction inout))
+                (port 13 (direction inout))
+                (port 11 (direction inout))
+                (port 14 (direction inout))
+                (port 18 (direction inout))
+                (port 7 (direction inout))
+                (port 15 (direction inout))
+                (port 6 (direction inout))
+                (port 8 (direction inout))
+                (port 10 (direction inout))
+                )
+            )
+        )
+        (cell "JL308-25410G01"
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port 4 (direction inout))
+                (port 9 (direction inout))
+                (port 5 (direction inout))
+                (port 8 (direction inout))
+                (port 7 (direction inout))
+                (port 10 (direction inout))
+                (port 6 (direction inout))
+                (port 3 (direction inout))
+                (port 1 (direction inout))
+                (port 2 (direction inout))
+                )
+            )
+        )
+        (cell CC1H103ZA1ED3F4D1100
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port 1 (direction inout))
+                (port 2 (direction inout))
+                )
+            )
+        )
+        (cell "B5B-XH-A(LF)(SN)"
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port 1 (direction inout))
+                (port 3 (direction inout))
+                (port 5 (direction inout))
+                (port 2 (direction inout))
+                (port 4 (direction inout))
+                )
+            )
+        )
+        (cell "X6521WV-2x22H-C60D30"
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port 5 (direction inout))
+                (port 30 (direction inout))
+                (port 29 (direction inout))
+                (port 22 (direction inout))
+                (port 19 (direction inout))
+                (port 32 (direction inout))
+                (port 21 (direction inout))
+                (port 40 (direction inout))
+                (port 31 (direction inout))
+                (port 37 (direction inout))
+                (port 6 (direction inout))
+                (port 12 (direction inout))
+                (port 9 (direction inout))
+                (port 42 (direction inout))
+                (port 38 (direction inout))
+                (port 44 (direction inout))
+                (port 3 (direction inout))
+                (port 41 (direction inout))
+                (port 4 (direction inout))
+                (port 34 (direction inout))
+                (port 7 (direction inout))
+                (port 10 (direction inout))
+                (port 18 (direction inout))
+                (port 39 (direction inout))
+                (port 1 (direction inout))
+                (port 15 (direction inout))
+                (port 33 (direction inout))
+                (port 20 (direction inout))
+                (port 25 (direction inout))
+                (port 35 (direction inout))
+                (port 14 (direction inout))
+                (port 8 (direction inout))
+                (port 13 (direction inout))
+                (port 24 (direction inout))
+                (port 2 (direction inout))
+                (port 26 (direction inout))
+                (port 36 (direction inout))
+                (port 11 (direction inout))
+                (port 23 (direction inout))
+                (port 16 (direction inout))
+                (port 17 (direction inout))
+                (port 43 (direction inout))
+                (port 28 (direction inout))
+                (port 27 (direction inout))
+                )
+            )
+        )
+        (cell CFR0W4J0205A50
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port 1 (direction inout))
+                (port 2 (direction inout))
+                )
+            )
+        )
+        (cell "B5B-PH-K-S(LF)(SN)"
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port 5 (direction inout))
+                (port 2 (direction inout))
+                (port 4 (direction inout))
+                (port 3 (direction inout))
+                (port 1 (direction inout))
+                )
+            )
+        )
+        (cell "XT30PW-M30.G.Y"
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port 4 (direction inout))
+                (port 3 (direction inout))
+                (port "+" (direction inout))
+                (port "-" (direction inout))
+                )
+            )
+        )
+        (cell "JL308-25403G01"
+            (cellType generic)
+            (view schematic
+                (viewType schematic)
+                (interface
+                    (port 3 (direction inout))
+                (port 2 (direction inout))
+                (port 1 (direction inout))
+                )
+            )
+        )
+    )
+    
+    (library Main
+            (edifLevel 0)
+            (technology (numberDefinition))
+            (cell Breakout_Board_top
+                (cellType generic)
+                (view schematic
+                    (viewType schematic)
+                    (interface)
+                    (contents
+                        (instance CN3
+                (viewRef schematic (cellRef "XT30UPB-F30.G.Y" (libraryRef FluxLibrary)))
+            )
+                        (instance SK1
+                (viewRef schematic (cellRef "Z-ICS0S16P-NG00" (libraryRef FluxLibrary)))
+            )
+                        (instance U2
+                (viewRef schematic (cellRef "PZ254-1-19-Z-8.5" (libraryRef FluxLibrary)))
+            )
+                        (instance U8
+                (viewRef schematic (cellRef "JL308-25410G01" (libraryRef FluxLibrary)))
+            )
+                        (instance U14
+                (viewRef schematic (cellRef CC1H103ZA1ED3F4D1100 (libraryRef FluxLibrary)))
+            )
+                        (instance CN2
+                (viewRef schematic (cellRef "B5B-XH-A(LF)(SN)" (libraryRef FluxLibrary)))
+            )
+                        (instance U1
+                (viewRef schematic (cellRef "PZ254-1-19-Z-8.5" (libraryRef FluxLibrary)))
+            )
+                        (instance H1
+                (viewRef schematic (cellRef "X6521WV-2x22H-C60D30" (libraryRef FluxLibrary)))
+            )
+                        (instance U3
+                (viewRef schematic (cellRef "PZ254-1-19-Z-8.5" (libraryRef FluxLibrary)))
+            )
+                        (instance U4
+                (viewRef schematic (cellRef "PZ254-1-19-Z-8.5" (libraryRef FluxLibrary)))
+            )
+                        (instance U9
+                (viewRef schematic (cellRef "JL308-25410G01" (libraryRef FluxLibrary)))
+            )
+                        (instance R2
+                (viewRef schematic (cellRef CFR0W4J0205A50 (libraryRef FluxLibrary)))
+            )
+                        (instance U7
+                (viewRef schematic (cellRef "JL308-25410G01" (libraryRef FluxLibrary)))
+            )
+                        (instance U11
+                (viewRef schematic (cellRef "B5B-PH-K-S(LF)(SN)" (libraryRef FluxLibrary)))
+            )
+                        (instance U6
+                (viewRef schematic (cellRef "JL308-25410G01" (libraryRef FluxLibrary)))
+            )
+                        (instance CN1
+                (viewRef schematic (cellRef "XT30PW-M30.G.Y" (libraryRef FluxLibrary)))
+            )
+                        (instance U10
+                (viewRef schematic (cellRef "JL308-25410G01" (libraryRef FluxLibrary)))
+            )
+                        (instance U12
+                (viewRef schematic (cellRef "B5B-PH-K-S(LF)(SN)" (libraryRef FluxLibrary)))
+            )
+                        (instance U13
+                (viewRef schematic (cellRef "JL308-25403G01" (libraryRef FluxLibrary)))
+            )
+                        (instance U5
+                (viewRef schematic (cellRef "JL308-25410G01" (libraryRef FluxLibrary)))
+            )
+                        (Net "Net 43"
+                            (joined (portRef 17 (instanceRef U3))
+                            (portRef 17 (instanceRef U4))
+                            (portRef 7 (instanceRef U7)))
+                        )
+                        (Net "Net 49"
+                            (joined (portRef 11 (instanceRef H1))
+                            (portRef 4 (instanceRef U9))
+                            (portRef 4 (instanceRef U11)))
+                        )
+                        (Net "Net 10"
+                            (joined (portRef 9 (instanceRef U8))
+                            (portRef 14 (instanceRef H1))
+                            (portRef 9 (instanceRef U3))
+                            (portRef 9 (instanceRef U4)))
+                        )
+                        (Net "Net 45"
+                            (joined (portRef 18 (instanceRef U3))
+                            (portRef 18 (instanceRef U4))
+                            (portRef 8 (instanceRef U7)))
+                        )
+                        (Net "Net 2"
+                            (joined (portRef 15 (instanceRef H1))
+                            (portRef 8 (instanceRef U9)))
+                        )
+                        (Net "Net 25"
+                            (joined (portRef 8 (instanceRef U2))
+                            (portRef 8 (instanceRef U1))
+                            (portRef 32 (instanceRef H1))
+                            (portRef 3 (instanceRef U6)))
+                        )
+                        (Net "Net 34"
+                            (joined (portRef 16 (instanceRef U2))
+                            (portRef 16 (instanceRef U1))
+                            (portRef 22 (instanceRef H1))
+                            (portRef 5 (instanceRef U5)))
+                        )
+                        (Net "Net 24"
+                            (joined (portRef 17 (instanceRef H1))
+                            (portRef 9 (instanceRef U9)))
+                        )
+                        (Net "Net 44"
+                            (joined (portRef 9 (instanceRef H1))
+                            (portRef 3 (instanceRef U9))
+                            (portRef 3 (instanceRef U11)))
+                        )
+                        (Net "Net 40"
+                            (joined (portRef 15 (instanceRef SK1))
+                            (portRef 2 (instanceRef CN2)))
+                        )
+                        (Net "Net 38"
+                            (joined (portRef 19 (instanceRef H1))
+                            (portRef 10 (instanceRef U9)))
+                        )
+                        (Net "Net 23"
+                            (joined (portRef 6 (instanceRef U2))
+                            (portRef 6 (instanceRef U1))
+                            (portRef 38 (instanceRef H1))
+                            (portRef 5 (instanceRef U6)))
+                        )
+                        (Net "Net 47"
+                            (joined (portRef 4 (instanceRef SK1))
+                            (portRef 21 (instanceRef H1)))
+                        )
+                        (Net "Net 19"
+                            (joined (portRef 3 (instanceRef H1))
+                            (portRef 7 (instanceRef U9))
+                            (portRef 2 (instanceRef U9))
+                            (portRef 2 (instanceRef U11))
+                            (portRef 7 (instanceRef U10))
+                            (portRef 2 (instanceRef U10))
+                            (portRef 2 (instanceRef U12))
+                            (portRef 3 (instanceRef U13)))
+                        )
+                        (Net "Net 53"
+                            (joined (portRef 35 (instanceRef H1))
+                            (portRef 5 (instanceRef U10))
+                            (portRef 5 (instanceRef U12)))
+                        )
+                        (Net "Net 11"
+                            (joined (portRef 10 (instanceRef U8))
+                            (portRef 34 (instanceRef H1))
+                            (portRef 10 (instanceRef U3))
+                            (portRef 10 (instanceRef U4)))
+                        )
+                        (Net "Net 37"
+                            (joined (portRef 19 (instanceRef U2))
+                            (portRef 19 (instanceRef U1))
+                            (portRef 2 (instanceRef U5)))
+                        )
+                        (Net "Net 13"
+                            (joined (portRef 12 (instanceRef U3))
+                            (portRef 12 (instanceRef U4))
+                            (portRef 2 (instanceRef U7)))
+                        )
+                        (Net "Net 55"
+                            (joined (portRef 2 (instanceRef SK1))
+                            (portRef 25 (instanceRef H1)))
+                        )
+                        (Net "Net 39"
+                            (joined (portRef 16 (instanceRef SK1))
+                            (portRef 1 (instanceRef CN2)))
+                        )
+                        (Net "Net 26"
+                            (joined (portRef 9 (instanceRef U2))
+                            (portRef 9 (instanceRef U1))
+                            (portRef 30 (instanceRef H1))
+                            (portRef 2 (instanceRef U6)))
+                        )
+                        (Net "Net 4"
+                            (joined (portRef 3 (instanceRef U8))
+                            (portRef 3 (instanceRef U3))
+                            (portRef 3 (instanceRef U4)))
+                        )
+                        (Net "Net 48"
+                            (joined (portRef 3 (instanceRef SK1))
+                            (portRef 23 (instanceRef H1)))
+                        )
+                        (Net "Net 50"
+                            (joined (portRef 13 (instanceRef H1))
+                            (portRef 5 (instanceRef U9))
+                            (portRef 5 (instanceRef U11)))
+                        )
+                        (Net "Net 27"
+                            (joined (portRef 10 (instanceRef U2))
+                            (portRef 10 (instanceRef U1))
+                            (portRef 28 (instanceRef H1))
+                            (portRef 1 (instanceRef U6)))
+                        )
+                        (Net "Net 60"
+                            (joined (portRef 33 (instanceRef H1))
+                            (portRef 10 (instanceRef U10)))
+                        )
+                        (Net "Net 35"
+                            (joined (portRef 17 (instanceRef U2))
+                            (portRef 17 (instanceRef U1))
+                            (portRef 10 (instanceRef H1))
+                            (portRef 4 (instanceRef U5)))
+                        )
+                        (Net "Net 20"
+                            (joined (portRef 3 (instanceRef U2))
+                            (portRef 3 (instanceRef U1))
+                            (portRef 40 (instanceRef H1))
+                            (portRef 8 (instanceRef U6)))
+                        )
+                        (Net "Net 62"
+                            (joined (portRef 43 (instanceRef H1))
+                            (portRef 1 (instanceRef U13)))
+                        )
+                        (Net "Net 1"
+                            (joined (portRef 1 (instanceRef U8))
+                            (portRef 1 (instanceRef U3))
+                            (portRef 1 (instanceRef U4))
+                            (portRef 1 (instanceRef R2)))
+                        )
+                        (Net "Net 36"
+                            (joined (portRef 18 (instanceRef U2))
+                            (portRef 18 (instanceRef U1))
+                            (portRef 3 (instanceRef U5)))
+                        )
+                        (Net "Net 12"
+                            (joined (portRef 36 (instanceRef H1))
+                            (portRef 11 (instanceRef U3))
+                            (portRef 11 (instanceRef U4))
+                            (portRef 1 (instanceRef U7)))
+                        )
+                        (Net "Net 16"
+                            (joined (portRef 1 (instanceRef U2))
+                            (portRef 7 (instanceRef U2))
+                            (portRef 1 (instanceRef U1))
+                            (portRef 7 (instanceRef U1))
+                            (portRef 42 (instanceRef H1))
+                            (portRef 8 (instanceRef H1))
+                            (portRef 14 (instanceRef U3))
+                            (portRef 14 (instanceRef U4))
+                            (portRef 4 (instanceRef U7))
+                            (portRef 10 (instanceRef U7))
+                            (portRef 4 (instanceRef U6))
+                            (portRef 10 (instanceRef U6))
+                            (portRef "-" (instanceRef CN1))
+                            (portRef 1 (instanceRef U5)))
+                        )
+                        (Net "Net 18"
+                            (joined (portRef 16 (instanceRef U3))
+                            (portRef 16 (instanceRef U4))
+                            (portRef 6 (instanceRef U7)))
+                        )
+                        (Net "Net 42"
+                            (joined (portRef 13 (instanceRef SK1))
+                            (portRef 4 (instanceRef CN2)))
+                        )
+                        (Net "Net 15"
+                            (joined (portRef 2 (instanceRef U2))
+                            (portRef 2 (instanceRef U1))
+                            (portRef 9 (instanceRef U6)))
+                        )
+                        (Net "Net 57"
+                            (joined (portRef 2 (instanceRef U14))
+                            (portRef 41 (instanceRef H1))
+                            (portRef 6 (instanceRef U10))
+                            (portRef 1 (instanceRef U10))
+                            (portRef 1 (instanceRef U12))
+                            (portRef 2 (instanceRef U13)))
+                        )
+                        (Net "Net 21"
+                            (joined (portRef 4 (instanceRef U2))
+                            (portRef 4 (instanceRef U1))
+                            (portRef 7 (instanceRef U6)))
+                        )
+                        (Net "Net 28"
+                            (joined (portRef 11 (instanceRef U2))
+                            (portRef 11 (instanceRef U1))
+                            (portRef 12 (instanceRef H1))
+                            (portRef 10 (instanceRef U5)))
+                        )
+                        (Net "Net 5"
+                            (joined (portRef 4 (instanceRef U8))
+                            (portRef 4 (instanceRef U3))
+                            (portRef 4 (instanceRef U4)))
+                        )
+                        (Net "Net 17"
+                            (joined (portRef 20 (instanceRef H1))
+                            (portRef 15 (instanceRef U3))
+                            (portRef 15 (instanceRef U4))
+                            (portRef 5 (instanceRef U7)))
+                        )
+                        (Net "Net 6"
+                            (joined (portRef 5 (instanceRef U8))
+                            (portRef 44 (instanceRef H1))
+                            (portRef 5 (instanceRef U3))
+                            (portRef 5 (instanceRef U4))
+                            (portRef 2 (instanceRef R2)))
+                        )
+                        (Net "Net 54"
+                            (joined (portRef 9 (instanceRef SK1))
+                            (portRef 1 (instanceRef U14))
+                            (portRef 5 (instanceRef CN2))
+                            (portRef 1 (instanceRef H1)))
+                        )
+                        (Net "Net 3"
+                            (joined (portRef 2 (instanceRef U8))
+                            (portRef 2 (instanceRef U3))
+                            (portRef 2 (instanceRef U4)))
+                        )
+                        (Net "Net 8"
+                            (joined (portRef 7 (instanceRef U8))
+                            (portRef 16 (instanceRef H1))
+                            (portRef 7 (instanceRef U3))
+                            (portRef 7 (instanceRef U4)))
+                        )
+                        (Net "Net 9"
+                            (joined (portRef 8 (instanceRef U8))
+                            (portRef 18 (instanceRef H1))
+                            (portRef 8 (instanceRef U3))
+                            (portRef 8 (instanceRef U4)))
+                        )
+                        (Net "Net 52"
+                            (joined (portRef 37 (instanceRef H1))
+                            (portRef 4 (instanceRef U10))
+                            (portRef 4 (instanceRef U12)))
+                        )
+                        (Net "Net 30"
+                            (joined (portRef 13 (instanceRef U2))
+                            (portRef 13 (instanceRef U1))
+                            (portRef 26 (instanceRef H1))
+                            (portRef 8 (instanceRef U5)))
+                        )
+                        (Net "Net 58"
+                            (joined (portRef 29 (instanceRef H1))
+                            (portRef 8 (instanceRef U10)))
+                        )
+                        (Net "Net 56"
+                            (joined (portRef 1 (instanceRef SK1))
+                            (portRef 27 (instanceRef H1)))
+                        )
+                        (Net "Net 7"
+                            (joined (portRef 6 (instanceRef U8))
+                            (portRef 6 (instanceRef U3))
+                            (portRef 6 (instanceRef U4)))
+                        )
+                        (Net "Net 33"
+                            (joined (portRef 15 (instanceRef U2))
+                            (portRef 15 (instanceRef U1))
+                            (portRef 24 (instanceRef H1))
+                            (portRef 6 (instanceRef U5)))
+                        )
+                        (Net "Net 41"
+                            (joined (portRef 14 (instanceRef SK1))
+                            (portRef 3 (instanceRef CN2)))
+                        )
+                        (Net "Net 14"
+                            (joined (portRef 13 (instanceRef U3))
+                            (portRef 13 (instanceRef U4))
+                            (portRef 3 (instanceRef U7)))
+                        )
+                        (Net "Net 29"
+                            (joined (portRef 12 (instanceRef U2))
+                            (portRef 12 (instanceRef U1))
+                            (portRef 9 (instanceRef U5)))
+                        )
+                        (Net "Net 59"
+                            (joined (portRef 31 (instanceRef H1))
+                            (portRef 9 (instanceRef U10)))
+                        )
+                        (Net "Net 51"
+                            (joined (portRef 39 (instanceRef H1))
+                            (portRef 3 (instanceRef U10))
+                            (portRef 3 (instanceRef U12)))
+                        )
+                        (Net "Net 22"
+                            (joined (portRef 5 (instanceRef U2))
+                            (portRef 5 (instanceRef U1))
+                            (portRef 6 (instanceRef U6)))
+                        )
+                        (Net "Net 32"
+                            (joined (portRef 8 (instanceRef SK1))
+                            (portRef 7 (instanceRef H1))
+                            (portRef 6 (instanceRef U9))
+                            (portRef 1 (instanceRef U9))
+                            (portRef 1 (instanceRef U11)))
+                        )
+                        (Net "Net 31"
+                            (joined (portRef 14 (instanceRef U2))
+                            (portRef 14 (instanceRef U1))
+                            (portRef 7 (instanceRef U5)))
+                        )
+                        (Net "Net 46"
+                            (joined (portRef 4 (instanceRef H1))
+                            (portRef 2 (instanceRef H1))
+                            (portRef 19 (instanceRef U3))
+                            (portRef 19 (instanceRef U4))
+                            (portRef 9 (instanceRef U7))
+                            (portRef "+" (instanceRef CN1)))
+                        )
+                    )
+                )
+            )
+        )
+        (design Breakout_Board
+            (cellRef Breakout_Board_top (libraryRef Main))
+        )
+)

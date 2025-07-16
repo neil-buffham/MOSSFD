@@ -1,0 +1,1 @@
+I was pretty happy with the 55 flap drum size, but I didn't want to have gears between the motor drive shaft and the drum, because it would be one more point of friction/failure/variable. The motor would probably have fit in this drum, but not without a gear to handle the offset, or some other BS-ery.

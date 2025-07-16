@@ -1,0 +1,3 @@
+Yeah, nah. The mouse wheel encoders I was using were not precise enough, and other options are either too expensive and/or large if they have the needed precision. Modified the Left wall to fit the encoder and ran a bunch of tests. I couldn't get decent working code to get use-able resolution out of the encoder because 57 flaps means 360 degrees / 57 is ~6ish degrees, which would be barely use-able results.
+
+We will just have to shoot for avoiding step skips. 
